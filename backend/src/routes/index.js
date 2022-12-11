@@ -4,7 +4,7 @@ const router = express.Router()
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('index', { title: `Coyotiv's Express + MongoDB + Docker + Jest + Vue starter Template` })
+  res.render('index', { title: `Coyotiv's Express + Mongo starter Template` })
 })
 
 module.exports = router
