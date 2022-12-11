@@ -1,0 +1,11 @@
+extends layout
+
+block content 
+ 
+ each user in users
+  h1.heading #{user.name}
+  h1 #{user.products}
+  //- h1 #{user.products}
+  each product in user.products
+   h1 #{product.description}
+ 
