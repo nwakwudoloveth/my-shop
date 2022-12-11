@@ -1,33 +1,73 @@
 const express = require('express')
-const User = require('../models/user')
 
 const router = express.Router()
+const User = require('../models/user')
+const Product = require('../models/product')
 
-/* GET users listing. */
-router.get('/', async (req, res) => {
-  const query = {}
-  res.send(await User.find(query).catch(error => console.log('Users not found, error: ', error)))
-})
-
-/* GET initialize */
-router.get('/initialize', async (req, res) => {
-  const mihri = await User.create({ name: 'mihri', age: 35 })
-  const armagan = await User.create({ name: 'armagan', age: 36 })
-
-  const steve = await User.create({ name: 'steve', age: 21 })
-  steve.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
-
-  steve.greet(mihri)
-  steve.greet(armagan)
-
-  console.log(steve)
+router.get('/initialise', async function (req, res) {
+  const shoe = new Product({ image: 'url', price: 1500, description: 'This is a good shoe' })
+  shoe.save()
+  const mariana = new User({ name: 'mariana', email: 'mariana@gmail.com', password: 'password' })
+  const loveth = new User({ name: 'Loveth', email: 'loveth@gmail.com', password: 'password' })
+  const zeynep = new User({ name: 'Zeynep', email: 'Zeynep@gmail.com', password: 'password' })
+  zeynep.list(shoe)
+  loveth.list(shoe)
+  mariana.list(shoe)
   res.sendStatus(200)
 })
+// get users Request
+router.get('/', async function (req, res, next) {
+  try {
+    const users = await User.find({})
+    res.render('user', { users })
+  } catch (e) {
+    res.sendStatus(404)
+  }
+})
+// post request
+router.post('/', async function (req, res, next) {
+  const { name, email, password } = req.body
+  try {
+    if (!email || !name || !password) {
+      res
+        .send({
+          message: 'Missing fields.',
+        })
+        .status(400)
+      return
+    }
+    const user = await User.create({
+      name,
+      email,
+      password,
+    })
+    res.send(user)
+  } catch (e) {
+    next(e)
+  }
+})
 
-/* POST user */
-router.post('/', async (req, res) => {
-  const createdUser = await User.create(req.body)
-  res.status(201).send(createdUser)
+// update a user
+router.patch('/:id', async function (req, res, next) {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, {
+      name: req.body.name,
+      email: req.body.email,
+    })
+    res.send(user)
+  } catch (e) {
+    next(e)
+  }
+})
+
+// delete a user
+router.delete('/:id', async function (req, res, next) {
+  try {
+    await User.findByIdAndDelete(req.params.id)
+    res.sendStatus(200)
+  } catch (e) {
+    next(e)
+  }
 })
 
 module.exports = router
