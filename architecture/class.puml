@@ -1,6 +1,32 @@
-@startuml Person 
-class Person {
-  name: string
-  age: number
+@startuml Class 
+class User{
+name: string
+email: string
+password: number
+  constructor(name: string, email:number, password:number)
+  product:[Products]
+   get profile()
+  list(Product)
+   viewoffer(Product)
+   delete(Product)
+   cart: [Product]
+  order: [Product]
+  search(Product)
+  addToCart(Product)
+  deleteFromCart(Product)
+  
 }
+
+  class Product {
+  name :string
+  price: string
+  description : string
+  image:image
+  constructor(name: string, price:string, description:string, image:image)
+
+  }
+  
+   User o---> "0..*" Product :list, delete
+   User o-->"0..*"  Product :search, addToCart
+
 @enduml
