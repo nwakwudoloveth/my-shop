@@ -1,0 +1,10 @@
+{
+  "name": "sose-express-mongo-docker-jest-vue",
+  "version": "0.0.0",
+  "description": "Coyotiv - School of Software Engineering - Express + MongoDB + Docker + Jest + Vue starter Template",
+  "license": "MIT",
+  "workspaces": [
+    "./packages/backend",
+    "./packages/frontend"
+  ]
+}

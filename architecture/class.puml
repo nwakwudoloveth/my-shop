@@ -1,0 +1,6 @@
+@startuml Person 
+class Person {
+  name: string
+  age: number
+}
+@enduml

@@ -1,0 +1,165 @@
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+
+tasks:
+  - name: backend
+    # change working directory as per configured in `checkoutLocation`
+    # which is configured above as `/workspaces/backend`
+    before: |
+      docker run -d -p 8080:8080 plantuml/plantuml-server:tomcat
+      docker run --name mongodb -d -p 27017:27017 -v /workspace/data:/data/db mongo
+      cd backend
+    init: | # runs during prebuild
+      npm install --location=global npm@latest
+      npm install -g nodemon
+      npm install
+
+    command: |
+      if [ -f .env ]; then
+        # If this workspace already has a .env, don't override it
+        # Local changes survive a workspace being opened and closed
+        # but they will not persist between separate workspaces for the same repo
+        echo "Found .env in workspace"
+      else
+        if [ -z "${DOTENV}" ]; then
+          # There is no $DOTENV from a previous workspace
+          # Default to the example .env
+          echo "Setting example .env"
+          cp .env.example .env 
+        else
+          # After making changes to .env, run this line to persist it to $DOTENV
+          #   gp env DOTENV="$(base64 .env | tr -d '\n')"
+          # 
+          # Environment variables set this way are shared between all your workspaces for this repo
+          # The lines below will read $DOTENV and print a .env file
+          echo "Restoring .env from Gitpod"
+          echo "${DOTENV}" | base64 -d > .env
+        fi
+      fi
+      gp sync-done backend
+
+    # change working directory as per configured in `checkoutLocation`
+    # which is configured above as `/workspaces/frontend`
+  - name: frontend
+    before: |
+      cd frontend
+
+    init: | # runs during prebuild
+      npm install --location=global npm@latest
+      npm install -g nodemon
+      npm install
+
+    command: |
+      if [ -f .env ]; then
+        # If this workspace already has a .env, don't override it
+        # Local changes survive a workspace being opened and closed
+        # but they will not persist between separate workspaces for the same repo
+        echo "Found .env in workspace"
+      else
+        if [ -z "${DOTENV}" ]; then
+          # There is no $DOTENV from a previous workspace
+          # Default to the example .env
+          echo "Setting example .env"
+          cp .env.example .env 
+        else
+          # After making changes to .env, run this line to persist it to $DOTENV
+          #   gp env DOTENV="$(base64 .env | tr -d '\n')"
+          # 
+          # Environment variables set this way are shared between all your workspaces for this repo
+          # The lines below will read $DOTENV and print a .env file
+          echo "Restoring .env from Gitpod"
+          echo "${DOTENV}" | base64 -d > .env
+        fi
+      fi
+      gp sync-done frontend
+
+  - name: start
+    init: |
+      gp sync-await backend
+      gp sync-await frontend
+    command: |
+      gp ports await 23000 && gp open README.md
+      docker-compose up --build
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 27017 # mongodb local
+    name: mongodb-local
+    onOpen: ignore
+    visibility: private
+  - port: 27019 # mongodb docker
+    name: mongodb-docker
+    onOpen: ignore
+    visibility: private
+  - port: 4444 # default express
+    name: default-express
+    onOpen: ignore
+    visibility: private
+  - port: 4173 # preview vue
+    name: default-express
+    onOpen: ignore
+    visibility: private
+  - port: 4444 # default from .env file
+    name: default-from-env-file
+    onOpen: ignore
+    visibility: private
+  - port: 5500 # liveserver
+    name: liveserver
+    onOpen: ignore
+    visibility: private
+  - port: 5173 # vue
+    name: vue
+    onOpen: ignore
+    visibility: private
+  - port: 8080 # plantuml server
+    name: plantuml-server
+    onOpen: ignore
+    visibility: private
+  - port: 8083 # traefik
+    name: traefik
+    onOpen: ignore
+    visibility: private
+  - port: 80
+    onOpen: ignore
+    visibility: private
+  - port: 35729 # livereload
+    name: livereload
+    onOpen: ignore
+    visibility: private
+
+# list of vscode extensions https://open-vsx.org which should be installed for users of this workspace
+vscode:
+  extensions:
+    # Docker
+    - ms-azuretools.vscode-docker
+    # ENV
+    - IronGeek.vscode-env
+    # Eslint
+    - dbaeumer.vscode-eslint
+    # GitLens
+    - eamodio.gitlens
+    # JavaScript (ES6) code snippets
+    - xabikos.JavaScriptSnippets
+    # Live Server
+    - ritwickdey.liveserver
+    # MongoDB
+    - mongodb.mongodb-vscode
+    # NPM Intellisense
+    - christian-kohler.npm-intellisense
+    # Path Intellisense
+    - christian-kohler.path-intellisense
+    # Plantuml
+    - jebbs.plantuml
+    # Prettier
+    - esbenp.prettier-vscode
+    # REST Client
+    - humao.rest-client
+    # Vetur
+    - octref.vetur
+    # vscode-icons
+    - vscode-icons-team.vscode-icons
+
+#
+github:
+  prebuilds:
+    # enable checks fail when the prebuild failed
+    addCheck: prevent-merge-on-error

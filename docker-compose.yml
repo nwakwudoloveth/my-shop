@@ -1,0 +1,55 @@
+version: '3'
+services:
+  frontend:
+    container_name: sose-frontend
+    image: frontend
+    build:
+      context: frontend
+      dockerfile: dev.Dockerfile
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.frontend.rule=Host(`picories.localhost`)
+      - traefik.http.routers.frontend.entrypoints=web
+    ports:
+      - 8080
+    expose:
+      - 5173
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+  backend:
+    container_name: sose-backend
+    image: backend
+    build:
+      context: backend
+      dockerfile: dev.Dockerfile
+    environment:
+      - MONGODB_CONNECTION_STRING=mongodb://mongo/mongodb
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.backend.rule=(Host(`picories.localhost`) && PathPrefix(`/api`))
+      - traefik.http.routers.backend.entrypoints=web
+    ports:
+      - 4444:4444
+      - 35729:35729
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/test:/app/test
+  mongo:
+    container_name: sose-mongo
+    image: mongo
+    ports:
+      - 27019:27017
+  load-balancer:
+    container_name: sose-load-balancer
+    image: traefik:v2.7
+    command: 
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+    ports:
+      - 80:80
+      - 8083:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro

@@ -1,0 +1,9 @@
+node_modules/
+.history
+.eslintrc.js
+.prettierrc
+.prettierignore
+test
+jest.config.js
+jest.config.setup
+Dockerfile

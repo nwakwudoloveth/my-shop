@@ -1,0 +1,46 @@
+{
+	"editor.tabSize": 2,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.organizeImports": true
+	},
+	"editor.minimap.enabled": false,
+	"files.autoSave": "onFocusChange",
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+	"files.associations": {
+		"*.env.development": "env",
+		"*.env.production": "env",
+		"*.env.test": "env",
+		"*.env.development.local": "env",
+		"*.env.production.local": "env",
+		"*.env.test.local": "env",
+		"*.env.local": "env"
+	},
+	"npm-intellisense.importES6": false,
+	"npm-intellisense.importQuotes": "'",
+	"npm-intellisense.importDeclarationType": "const",
+	"npm-intellisense.scanDevDependencies": true,
+	"npm-intellisense.showBuildInLibs": true,
+	"plantuml.server": "http://localhost:8080",
+	"plantuml.render": "PlantUMLServer",
+	"plantuml.diagramsRoot": "docs/diagrams/src",
+	"plantuml.exportOutDir": "docs/diagrams/out",
+	"[markdown]": {
+		"files.trimTrailingWhitespace": false
+	},
+	"workbench.editorAssociations": {
+		"*.md": "vscode.markdown.preview.editor"
+	},
+	"workbench.startupEditor": "none",
+	"gitlens.showWelcomeOnInstall": false,
+	"gitlens.showWhatsNewAfterUpgrades": false,
+	"vetur.validation.template": false,
+	"vetur.validation.script": false,
+	"vetur.validation.style": false,
+	"gitpod.experimental.portsView.enabled": true,
+	"typescript.suggest.paths": false,
+	"javascript.suggest.paths": false,
+	"rest-client.previewResponseInUntitledDocument": true,
+	"jest.autoRun": "off"
+}
