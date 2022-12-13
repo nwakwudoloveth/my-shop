@@ -19,7 +19,7 @@ router.get('/initialise', async function (req, res) {
 router.get('/', async function (req, res, next) {
   try {
     const users = await User.find({})
-    res.render('user', { users })
+    res.send(users)
   } catch (e) {
     res.sendStatus(404)
   }
