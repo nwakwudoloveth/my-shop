@@ -13,6 +13,7 @@
 //   .then(() => console.log('connection established'))
 //   .catch(error => console.log('not connected:', error))
 const mongoose = require('mongoose')
+const { default: mongooseAutoPopulate } = require('mongoose-autopopulate')
 
 const username = process.env.MONGODB_USERNAME
 const password = process.env.MONGODB_PASSWORD
@@ -32,3 +33,5 @@ mongoose
   })
   .then(() => console.log('connection established'))
   .catch(console.log)
+
+module.exports = mongoose.connection

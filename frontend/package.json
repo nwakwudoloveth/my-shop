@@ -8,8 +8,17 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/vue-fontawesome": "^3.0.2",
+    "@popperjs/core": "^2.11.6",
     "axios": "^1.2.1",
+    "boostrap": "^2.0.0",
+    "bootstrap": "^5.2.3",
     "lint": "^0.8.19",
+    "normalize.css": "^8.0.1",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },
@@ -22,6 +31,8 @@
     "prettier": "^2.7.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
+    "sass": "^1.56.2",
+    "sass-loader": "^10.2.1",
     "vite": "^3.0.9"
   },
   "gitHooks": {

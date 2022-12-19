@@ -1,7 +1,7 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<template lang="pug">
+.about
+   h1 This is an about page hey
+
 </template>
 
 <style>
@@ -9,7 +9,7 @@
   .about {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: left;
   }
 }
 </style>

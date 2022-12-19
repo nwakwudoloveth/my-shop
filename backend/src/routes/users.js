@@ -5,7 +5,7 @@ const User = require('../models/user')
 const Product = require('../models/product')
 
 router.get('/initialise', async function (req, res) {
-  const shoe = new Product({ image: 'url', price: 1500, description: 'This is a good shoe' })
+  const shoe = new Product({ name: 'shoe', image: 'url', price: 1500, description: 'This is a good shoe' })
   shoe.save()
   const mariana = new User({ name: 'mariana', email: 'mariana@gmail.com', password: 'password' })
   const loveth = new User({ name: 'Loveth', email: 'loveth@gmail.com', password: 'password' })
@@ -20,6 +20,14 @@ router.get('/', async function (req, res, next) {
   try {
     const users = await User.find({})
     res.send(users)
+  } catch (e) {
+    res.sendStatus(404)
+  }
+})
+router.get('/products', async function (req, res, next) {
+  try {
+    const products = await Product.find({})
+    res.send(products)
   } catch (e) {
     res.sendStatus(404)
   }

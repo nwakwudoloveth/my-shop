@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 // converting class into mongoose schema
 const productSchema = new mongoose.Schema({
+  name: String,
   image: String,
   price: Number,
   description: String,
