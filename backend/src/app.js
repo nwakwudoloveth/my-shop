@@ -14,10 +14,22 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 
 const app = express()
-app.use(cors())
+// app.use(cors())
+app.use(
+  cors({
+    // enables requests from any domain, not safe, further add only the domain you want
+    origin: true,
+    // allows cookies
+    credentials: true,
+  })
+)
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
+// set proxy
+app.set('trust proxy', 1)
+
+// app.set('io', socketService)
 
 app.use(logger('dev'))
 app.use(express.json())
