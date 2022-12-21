@@ -10,8 +10,12 @@ export default {
       img.card-img-top(src='https://picsum.photos/200' alt='...')
       .card-body
         h5.card-title {{product.name}} {{product.price}}
-         button.btn.btn-primary.btnclass Add to cart
+       
+        font-awesome-icon(icon="fa-solid fa-magnifying-glass")
 
+        button.btn.btn-primary.btnclass Add to cart
+         
+  
 </template>
 
 <style>
