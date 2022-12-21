@@ -6,7 +6,7 @@ ADD package.json package-lock.json ./
 
 RUN npm install
 
-ADD .prettierrc.json .eslintrc.cjs vite.config.js ./
+ADD .prettierrc.json .eslintrc.cjs vite.config.js index.html .env.production ./
 
 ADD src ./src
 ADD public ./public
