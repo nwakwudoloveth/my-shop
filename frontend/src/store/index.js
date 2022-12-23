@@ -1,25 +1,28 @@
 import axios from 'axios'
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 
-import io from 'socket.io-client'
-
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
-axios.defaults.withCredentials = true
-
-Vue.use(Vuex)
-
-const socket = io(process.env.VUE_APP_BASE_URL)
+//import io from 'socket.io-client'
 
 axios.defaults.baseURL = import.meta.env.VITE_APP_BASE_URL
+axios.defaults.withCredentials = true
 
-const socket = io(process.env.VITE_APP_BASE_URL)
+// const socket = io(process.env.VUE_APP_BASE_URL)
 
 
-export default new Vuex.Store({
-  state:{},
-  mutations:{},
-  actions:{},
-  modules:{}
-  
+
+//const socket = io(process.env.VITE_APP_BASE_URL)
+
+export default createStore({
+  state() {
+    return {
+      count: 0,
+    }
+  },
+  mutations: {},
+  actions: {
+    incrementCount(store) {
+      store.state.count++
+    },
+  },
+  modules: {},
 })

@@ -20,7 +20,8 @@
     "lint": "^0.8.19",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.38",
-    "vue-router": "^4.1.5"
+    "vue-router": "^4.1.5",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
