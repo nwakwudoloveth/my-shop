@@ -18,12 +18,10 @@ export default {
     }
   },
   async created() {
-    const usersRequest = await axios.get('http://localhost:4444/api/users')
+    const usersRequest = await axios.get('/api/users')
     this.users = usersRequest.data
-  },
 
-  async created() {
-    const productsRequest = await axios.get('http://localhost:4444/api/users/products')
+    const productsRequest = await axios.get('/api/users/products')
     this.products = productsRequest.data
   },
 }
