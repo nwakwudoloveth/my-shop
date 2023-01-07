@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
 // converting class into mongoose schema
 const productSchema = new mongoose.Schema({
@@ -6,7 +7,9 @@ const productSchema = new mongoose.Schema({
   image: String,
   price: Number,
   description: String,
+  category: String,
 })
+productSchema.plugin(autopopulate)
 module.exports = mongoose.model('Product', productSchema)
 
 // class Product {
