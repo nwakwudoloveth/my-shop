@@ -1,11 +1,13 @@
 <script setup()>
-//import TheWelcome from '../components/the-welcome.vue'
+import { mapActions } from 'vuex'
 import UserCard from '@/components/user-card.vue'
 import ProductCard from '@/components/product-card.vue'
 import CartIcon from '@/components/addtoCart.vue'
-import axios from 'axios'
+
 
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
+
   components: {
     UserCard,
     ProductCard,
@@ -18,11 +20,10 @@ export default {
     }
   },
   async created() {
-    const usersRequest = await axios.get('/api/users')
-    this.users = usersRequest.data
-
-    const productsRequest = await axios.get('/api/users/products')
-    this.products = productsRequest.data
+    this.products = await this.fetchProducts()
+  },
+  methods: {
+    ...mapActions(['fetchProducts']),
   },
 }
 </script>
@@ -35,8 +36,8 @@ CartIcon
    h1 New offers
    product-card(v-for="product in products"  :product="product")
  
-//-  // ProductCard
-// user-card(v-for="user in users" :user="user") 
+
+   //user-card(v-for="user in users" :user="user") 
 //-   ProductCard
 //-   ProductCard
 //-   ProductCard
