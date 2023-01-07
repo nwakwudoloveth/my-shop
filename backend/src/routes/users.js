@@ -5,11 +5,22 @@ const User = require('../models/user')
 const Product = require('../models/product')
 
 router.get('/initialise', async function (req, res) {
-  const shoe = new Product({ name: 'shoe', image: 'url', price: 1500, description: 'This is a good shoe' })
+  const shoe = new Product({
+    name: 'shoe',
+    image: 'https://picsum.photos/200',
+    price: 1500,
+    description: 'This is a good shoe',
+  })
   shoe.save()
-  const mariana = new User({ name: 'mariana', email: 'mariana@gmail.com', password: 'password' })
-  const loveth = new User({ name: 'Loveth', email: 'loveth@gmail.com', password: 'password' })
-  const zeynep = new User({ name: 'Zeynep', email: 'Zeynep@gmail.com', password: 'password' })
+  const mariana = new User({ name: 'mariana', email: 'mariana@gmail.com' })
+  await mariana.setPassword('test')
+  await mariana.save()
+  const loveth = new User({ name: 'Loveth', email: 'loveth@gmail.com' })
+  await loveth.setPassword('test')
+  await loveth.save()
+  const zeynep = new User({ name: 'Zeynep', email: 'Zeynep@gmail.com' })
+  await zeynep.setPassword('test')
+  await zeynep.save()
   zeynep.list(shoe)
   loveth.list(shoe)
   mariana.list(shoe)
@@ -24,14 +35,7 @@ router.get('/', async function (req, res, next) {
     res.sendStatus(404)
   }
 })
-router.get('/products', async function (req, res, next) {
-  try {
-    const products = await Product.find({})
-    res.send(products)
-  } catch (e) {
-    res.sendStatus(404)
-  }
-})
+
 // post request
 router.post('/', async function (req, res, next) {
   const { name, email, password } = req.body
