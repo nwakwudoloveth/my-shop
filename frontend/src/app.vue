@@ -28,7 +28,7 @@ export default {
               li.nav-item
                router-link.nav-link(to="/list") List product
               li.nav-item
-               router-link.nav-link(to="/login") View Offer
+               router-link.nav-link(to="/login") Log in 
            form.d-flex(role='search')
               input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
               button.btn.btn-outline-success.btnclass(type='submit') 
