@@ -1,19 +1,26 @@
 <script>
+import CounterBox from '@/components/counter.vue'
+import CartIcon from '@/components/icons/icon-cart.vue'
 export default {
   name: 'ProductCard',
   props: ['product'],
+  components: {
+    CounterBox,
+    CartIcon,
+  },
 }
 </script>
 
 <template lang="pug">
 .card
-      img.card-img-top(src='https://picsum.photos/200' alt='...')
+      img.card-img-top(:src="`${product.image}`"  alt='...') 
       .card-body
         h5.card-title {{product.name}} {{product.price}}
-       
-        font-awesome-icon(icon="fa-solid fa-magnifying-glass")
-
-        button.btn.btn-primary.btnclass Add to cart
+        //- button.btn.btn-primary.btnclass(type='button')
+        
+        //-   CartIcon 
+        //-   |    Add to cart
+        //CounterBox
          
   
 </template>
