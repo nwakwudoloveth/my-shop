@@ -6,12 +6,18 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+const mongoose = require('mongoose')
+const passport = require('passport')
 
 const cors = require('cors')
 const mongooseConnection = require('./database-connection')
 
+const clientPromise = mongoose.connection.asPromise().then(connection => connection.getClient())
+
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+const accountRouter = require('./routes/account')
+const productRouter = require('./routes/products')
 
 const app = express()
 // app.use(cors())
@@ -39,15 +45,34 @@ app.use(cookieParser())
 app.use(
   session({
     secret: 'thisisasupersecuresecret',
-    store: MongoStore.create(mongooseConnection),
+    store: MongoStore.create({ clientPromise, stringify: false }),
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    },
   })
 )
 
+app.use(passport.initialize())
+app.use(passport.session())
+
+const User = require('./models/user')
+
+passport.use(User.createStrategy())
+
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'images', 'favicon.ico')))
-
+app.use('/api', (req, res, next) => {
+  req.session.viewCount = req.session.viewCount || 0
+  // req.session.viewCount++
+  next()
+})
 app.use('/api/', indexRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/account', accountRouter)
+app.use('/api/products', productRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
