@@ -1,3 +1,18 @@
+<script>
+import SearchIcon from '@/components/icons/icon-search.vue'
+import CartIcon from '@/components/icons/icon-cart.vue'
+import AccountIcon from '@/components/icons/icon-account.vue'
+import HeartIcon from '@/components/icons/icon-heart.vue'
+export default {
+  components: {
+    SearchIcon,
+    CartIcon,
+    AccountIcon,
+    HeartIcon,
+  },
+}
+</script>
+
 <template lang="pug">
 #app
   #nav
@@ -11,12 +26,24 @@
               li.nav-item
                router-link.nav-link(to="/") Home 
               li.nav-item
-               router-link.nav-link(to="/about") View Offer
+               router-link.nav-link(to="/list") List product
               li.nav-item
-               router-link.nav-link(to="/about") List Product
+               router-link.nav-link(to="/login") View Offer
            form.d-flex(role='search')
               input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
-              button.btn.btn-outline-success.btnclass(type='submit') Search
+              button.btn.btn-outline-success.btnclass(type='submit') 
+               SearchIcon
+              .btn
+               AccountIcon
+              .btn
+               HeartIcon
+              .btn
+               
+               CartIcon
+        
+             
+
+              
   router-view
 </template>
 
