@@ -55,9 +55,9 @@ export default {
 
 .card {
   margin-left: 30px;
-  margin-right: 50px;
+  margin-right: 20px;
   padding: 0px;
-  corner-radius: 30px;
+
   border: 10px;
   color: green;
 }
