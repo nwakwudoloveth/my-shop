@@ -22,7 +22,7 @@ export default {
           password: this.password,
         })
 
-        this.$router.push('/')
+        this.$router.push('/buyer')
       } catch (e) {
         this.backendError = e.response.data.message
       }
