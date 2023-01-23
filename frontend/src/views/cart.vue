@@ -1,7 +1,7 @@
 <script>
 import Navbarbuyer from '@/components/navbarbuyer.vue'
 import CartCard from '@/components/cart-card.vue'
-import { mapActions, mapState } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
