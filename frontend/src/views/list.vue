@@ -1,9 +1,12 @@
 <script>
 import { mapActions } from 'vuex'
-
+import Navbarseller from '@/components/navbarseller.vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'List',
+  components: {
+    Navbarseller,
+  },
   data() {
     return {
       name: '',
@@ -39,7 +42,8 @@ export default {
 </script>
 
 <template lang="pug">
-h2 Add product
+Navbarseller
+h3 Add product
 .row
   
   .col-4.column
@@ -72,10 +76,14 @@ h2 Add product
         div(v-if="backendError") {{ backendError }}
 </template>
 
-<style>
-h2 {
+<style scoped>
+.body {
+  background-color: rgb(114, 202, 234);
+}
+h3 {
   margin-left: 50px;
 }
+
 .image-placeholder {
   display: flex;
   align-items: center;
@@ -102,6 +110,9 @@ h2 {
 .upload {
   width: 100%;
   display: block;
+}
+form {
+  width: 100%;
 }
 @media (min-width: 1024px) {
 }
