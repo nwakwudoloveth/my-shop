@@ -12,6 +12,7 @@ router.get('/initialise', async function (req, res) {
     description: 'This is a good shoe',
   })
   shoe.save()
+
   const mariana = new User({ name: 'mariana', email: 'mariana@gmail.com' })
   await mariana.setPassword('test')
   await mariana.save()
@@ -21,6 +22,7 @@ router.get('/initialise', async function (req, res) {
   const zeynep = new User({ name: 'Zeynep', email: 'Zeynep@gmail.com' })
   await zeynep.setPassword('test')
   await zeynep.save()
+  // zeynep.addToCart(shoe)
   zeynep.list(shoe)
   loveth.list(shoe)
   mariana.list(shoe)
