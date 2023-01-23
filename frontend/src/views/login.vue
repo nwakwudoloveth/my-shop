@@ -52,7 +52,7 @@ label {
   margin: 1rem 0;
 }
 .login {
-  padding: 3% 30% 7%;
+  padding: 3% 10% 7%;
   border: 1px;
   //background-color: orange;
   margin-left: 50px;
@@ -62,6 +62,6 @@ label {
 }
 
 .form-control {
-  width: 60%;
+  width: 50%;
 }
 </style>
