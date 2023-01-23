@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex'
 import CounterBox from '@/components/counter.vue'
 import CartIcon from '@/components/icons/icon-cart.vue'
 export default {
@@ -8,28 +9,38 @@ export default {
     CounterBox,
     CartIcon,
   },
+  methods: {
+    ...mapActions(['addToCart']),
+  },
 }
 </script>
 
 <template lang="pug">
-.card
+.card 
       img.card-img-top(:src="`${product.image}`"  alt='...') 
       .card-body
-        h5.card-title {{product.name}} {{product.price}}
-        //- button.btn.btn-primary.btnclass(type='button')
-        
+        h5.card-title {{product.name}} 
+        h5 ${{product.price}}
+        button.btn.btn-outline-darkbuttonbutton(@click="addToCart(product._id)") Add to Cart
         //-   CartIcon 
-        //-   |    Add to cart
         //CounterBox
-         
+
+        
+  
   
 </template>
 
-<style>
+<style scoped>
 .card {
   width: 14rem;
-  padding: 2%;
+
   display: inline-block;
   margin: 10px;
+}
+
+.btn {
+  margin-left: 40px;
+  background-color: none;
+  border-color: #008ecc;
 }
 </style>
