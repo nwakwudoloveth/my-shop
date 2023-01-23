@@ -14,7 +14,12 @@ const UserSchema = new mongoose.Schema({
   // password: {
   //   type: String,
   // },
-  cart: [],
+  cart: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Cart',
+    autopopulate: true,
+  },
+
   order: [],
   products: [
     {
