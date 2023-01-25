@@ -23,10 +23,10 @@ export default {
 <template lang="pug">
   
 .container
-  .row 
-    .col.card.holder
-      img(src='https://picsum.photos/200' alt='productImage')
+ .row 
     .col
+      img(src='https://picsum.photos/200' alt='productImage')
+    .col      
       h2 {{product.name}}
       p {{product.description}}
       h4 review
@@ -63,5 +63,15 @@ export default {
 }
 .action {
   margin: 10px 10px 10px 0px;
+}
+img {
+  width: 300px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.col {
+  padding-right: 30px;
+  padding-left: 30px;
 }
 </style>
