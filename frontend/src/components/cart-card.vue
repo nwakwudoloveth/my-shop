@@ -16,24 +16,23 @@ export default {
 </script>
 
 <template lang="pug">
-Navbarbuyer
 .container.mt-5
-  .row.mb-3
+  .row
     .col-12
       
   .row.mb-3
-    .col-2
+    .col
       img(:src="`${product.image}`" alt='Product Image')
-    .col-4
-      h6 {{product.name}}
-    .col-2
-      h6 {{product.price}}
-    .col-2
+    .col
+      h5 {{product.name}}
+      h5 {{product.price}}
+   
+    .col
       .btn-group.btn-group-lg
         button.btn.btn-secondary -
         button.btn.btn-secondary 1
         button.btn.btn-secondary +
-    .col-2
+    .col
       button.btn.btn-danger(@click="removeItem(product._id)") Remove
   //- .row.mb-3
   //-   .col-8
@@ -45,3 +44,11 @@ Navbarbuyer
   //-     button.btn.btn-primary.btn-lg Checkout
 
 </template>
+
+<style scoped>
+.col {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+</style>
