@@ -36,4 +36,8 @@ CartCard(v-for="product in cart.items"  :product="product")
 
 </template>
 
-style
+<style scoped>
+h3 {
+  margin-left: 80px;
+}
+</style>
