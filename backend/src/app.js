@@ -49,8 +49,10 @@ app.use(
     store: MongoStore.create({ clientPromise, stringify: false }),
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000,
-      sameSite: 'none',
-      secure: true,
+      // sameSite: 'none',
+      // secure: true,
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+      secure: process.env.NODE_ENV === 'production',
     },
   })
 )
