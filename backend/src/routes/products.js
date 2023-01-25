@@ -13,6 +13,14 @@ router.get('/', async function (req, res, next) {
   }
 })
 
+// router.get('/', async function (req, res, next) {
+//   try {
+//     const searchResult = await Product.find({name:`${query}`})
+//     res.send(searchResult)
+//   } catch (e) {
+//     res.sendStatus(404)
+//   }
+// })
 router.get('/:productId', async (req, res) => {
   const product = await Product.findById(req.params.productId)
 
