@@ -16,8 +16,8 @@ export default {
 </script>
 
 <template lang="pug">
-.card 
-      img.card-img-top(:src="`${product.image}`"  alt='...') 
+.card
+      img.card-img-top(:src="`${product.image}`"  alt='...')(@click="$router.push(`products/${product._id}`)") 
       .card-body
         h5.card-title {{product.name}} 
         h5 ${{product.price}}
