@@ -1,16 +1,30 @@
 <script>
+import { mapActions, mapState } from 'vuex'
 import SearchIcon from '@/components/icons/icon-search.vue'
 import CartIcon from '@/components/icons/icon-cart.vue'
 import AccountIcon from '@/components/icons/icon-account.vue'
 import HeartIcon from '@/components/icons/icon-heart.vue'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Navbarbuyer',
+
   components: {
     SearchIcon,
     CartIcon,
     AccountIcon,
     HeartIcon,
+  },
+  async created() {
+    await this.fetchCart()
+  },
+
+  // methods: {
+  //   ...mapActions(['fetchCart']),
+  // },
+
+  computed: {
+    ...mapState(['cart']),
   },
 }
 </script>
@@ -19,15 +33,16 @@ export default {
 #nav.nav.navbar.navbar-expand-lg.bg-light.container-fluid
          button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarTogglerDemo03' aria-controls='navbarTogglerDemo03' aria-expanded='false' aria-label='Toggle navigation')
           span.navbar-toggler-icon
-         a.navbar-brand(href='').router-link.nav-link(to="/buyer") MyShop
+         router-link.navbar-brand(href='/buyer').nav-link(to="/buyer") MyShop
          #navbarTogglerDemo03.collapse.navbar-collapse
+          
          
           li.nav-item.dropdown.category
             .nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
               | Category
             ul.dropdown-menu
               li
-                a.dropdown-item(href='#') New Products
+                a.dropdown-item(href='#') 
               li
                 hr.dropdown-divider
               li
@@ -50,14 +65,14 @@ export default {
             .btn
                 HeartIcon
                 |     Saved
-            .btn
-              
-            button.btn.btn-outline-dark(@click="$router.push('/cart')" type='button')
-             CartIcon
-
-             |    Cart         
-             button.btn.btn-outline-success.btnclass.rounded-pill.badge
-              |     0
+            
+            .btn(@click="$router.push('/cart')" type='button') 
+              .btn
+              CartIcon
+              |    Cart         
+              .btn.btncart.rounded-pill.badge
+               | {{cart?.items?.length}}
+                
               
               
 router-view
@@ -69,7 +84,8 @@ router-view
 }
 
 .navbar-nav {
-  margin-left: 50px;
+  margin-left: 10px;
+
   //display: inline;
   //margin-right: 10px;
 }
@@ -83,10 +99,20 @@ router-view
   // background-color:
   color: #ffff;
   border: none;
+  width: 40px;
+  height: 40px;
+  margin-left: 2px;
+  border-radius: 4px;
 }
 .btnclass:hover {
   color: #ffff;
-  //background-color:
+}
+.btnborder {
+  width: 160px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  margin-top: 13px;
+  pointer-events: none;
 }
 
 a {
@@ -99,13 +125,23 @@ form {
 }
 
 .category {
-  margin-left: 50px;
+  margin-left: 10px;
   margin-right: 100px;
 }
 
 .dropdown-item {
   margin-left: 0;
   //padding-left: 0;
+}
+
+.btncart {
+  // background-color:
+  color: #ffff;
+  border: none;
+  width: 30px;
+  height: 20px;
+  margin-left: 2px;
+  background-color: #ff8a00;
 }
 
 //margin-left: 10px;
