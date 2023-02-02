@@ -16,12 +16,14 @@ export default {
 </script>
 
 <template lang="pug">
-.card
-      img.card-img-top(:src="`${product.image}`"  alt='...')(@click="$router.push(`products/${product._id}`)") 
+.card.border-0.my-5 
+      img.border.card-img-top.image-fluid(:src="`${product.image}`"  alt='...')(@click="$router.push(`products/${product._id}`)") 
       .card-body
-        h5.card-title {{product.name}} 
-        h5 ${{product.price}}
-        button.btn.btn-outline-darkbuttonbutton(@click="addToCart(product._id)") Add to Cart
+        p.card-title {{product.name}}  
+        p.price €{{product.price}}
+       
+       
+        
         //-   CartIcon 
         //CounterBox
 
@@ -31,16 +33,28 @@ export default {
 </template>
 
 <style scoped>
+.card-footer {
+  background-color: #fff6e4;
+}
+img {
+  width: 100%;
+  height: 180px;
+}
 .card {
-  width: 14rem;
-
+  width: 230px;
   display: inline-block;
   margin: 10px;
 }
 
-.btn {
-  margin-left: 40px;
+.btnborder {
+  margin: auto;
   background-color: none;
-  border-color: #008ecc;
+  width: 130px;
+  height: 40px;
+  border-color: #ff8a00;
+}
+.price {
+  color: #00000;
+  font-weight: bold;
 }
 </style>
