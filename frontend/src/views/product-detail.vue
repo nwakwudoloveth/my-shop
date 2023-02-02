@@ -1,10 +1,13 @@
 <script>
 import { mapActions } from 'vuex'
-
+import Navbarbuyer from '@/components/navbarbuyer.vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Detail',
   //props: ['product'],
+  components: {
+    Navbarbuyer,
+  },
 
   data() {
     return {
@@ -16,17 +19,18 @@ export default {
   },
   methods: {
     ...mapActions(['fetchProduct']),
+    ...mapActions(['addToCart']),
   },
 }
 </script>
 
 <template lang="pug">
-  
-.container
+Navbarbuyer  
+.container-fluid
  .row 
-    .col
-      img(src='https://picsum.photos/200' alt='productImage')
-    .col      
+    .col-sm-3.col-md-6.col-lg-4
+      img(:src="`${product?.image}`" alt='productImage')
+    .col-sm-3.col-md-6.col-lg-4  
       h2 {{product.name}}
       p {{product.description}}
       h4 review
@@ -38,8 +42,8 @@ export default {
         button.btn.btn-secondary(type='button') 1
         button.btn.btn-secondary(type='button') +
       br
-      button.btn.btn-primary.text-center.action(type='button') Buy Now
-      button.btn.btn-outline-primary.text-center.action(type='button') Add to Cart
+      button.btn.btn-primary.text-center.btnclass(@click="addToCart(product._id)" type='button') Buy Now
+      button.btn.btn-outline-warning.btnclass(@click="addToCart(product._id)" type='button') Add to Cart
       br
       h6 Delivery
       p
@@ -73,5 +77,12 @@ img {
 .col {
   padding-right: 30px;
   padding-left: 30px;
+}
+.btnclass {
+  height: 44px;
+  width: 130px;
+  margin: 5px;
+  color: #ffff;
+  margin-bottom: 5px;
 }
 </style>
