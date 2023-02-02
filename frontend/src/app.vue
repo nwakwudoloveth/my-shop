@@ -53,9 +53,9 @@ export default {
 @import '@/assets/theme.scss';
 @import 'bootstrap/scss/bootstrap.scss';
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #01070d;
   // background-color: #e6eaee;
 }
@@ -74,20 +74,58 @@ export default {
   width: 50%;
 }
 .btnclass {
-  background-color: rgb(114, 202, 234);
-  color: #ffff;
-  border: none;
+  background-color: #ff8a00;
+
+  border-radius: 0px;
+  font-weight: bolds;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100px;
+  height: 40px;
+
+  // color: #ff8a00;
+  // border: none;
 }
 .btnclass:hover {
+  //color: #fff6e4;
+  background-color: #ffa53c;
   color: #ffff;
-  background-color: rgb(29, 155, 234);
 }
-
+.btnclass:active {
+  //color: #fff6e4;
+  background: #ff8a00;
+  color: #ffff;
+}
 a {
   margin: 10px;
 }
 input {
   // width: 20%;
   // height: 40px;
+}
+
+.btnborder {
+  border-radius: 0px;
+  font-weight: bolds;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolds;
+  width: 100px;
+  height: 40px;
+  color: #ff8a00;
+  border-color: #ff8a00;
+  // color: #ff8a00;
+  // border: none;
+}
+.btnborder:hover {
+  background-color: #ffa53c;
+  color: #ffff;
+}
+
+.btn-primary {
+  --bs-btn-active-color: #ffff;
+  --bs-btn-active-bg: #ff8a00;
+}
+.btn-outline-success {
+  --bs-btn-active-color: #ffff;
+  --bs-btn-active-bg: #ff8a00;
 }
 </style>
