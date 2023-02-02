@@ -51,4 +51,9 @@ export default {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
+img {
+  width: 200px;
+  height: 180px;
+}
 </style>
