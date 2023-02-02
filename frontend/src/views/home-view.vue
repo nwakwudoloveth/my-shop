@@ -17,7 +17,7 @@ HomeNavbarbuyer
     .col-sm-9.col-md-7.col-lg-12.mx-auto.justify-content-start
         h1 Super Amazing Offers
         p  Don't miss out on the opportunity to save big on high-quality pre-owned items. 
-      button.btn.btn-primary.btnclass.ml-auto( type="button") Shop Now
+        button.btn.btn-primary.btnclass.ml-auto( type="button") Shop Now
 // h1 Start Shopping
 </template>
 
