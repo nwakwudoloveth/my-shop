@@ -32,7 +32,7 @@ export default {
           category: this.category,
         })
 
-        this.$router.push('/')
+        this.$router.push('/buyer')
       } catch (e) {
         this.backendError = e.response.data.message
       }
