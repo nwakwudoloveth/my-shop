@@ -30,19 +30,19 @@ export default {
 
 <template lang="pug">
 Navbarbuyer
-.box
+.box.container-fluid
+ .row
+    .col-sm-9.col-md-7.col-lg-12.mx-auto
+      img.img-fluid.heroImage(src='@/assets/images/LandingPage2.png')
+      div.grid-container.items
+        h1.hero.text-start.text-break Shop smart, not expensive! 
+        h4.hero.text-start.text-break Get Amazing Deals on High-Quality pre-owned items.
   
- h1.hero Shop smart, not expensive! 
- h4.hero Get Amazing Deals on High-Quality pre-owned items.
- p.hero 
-  | Find your next treasure at a great price - pre-owned items that are as good as new.
-  br 
-  | Don't miss out on the opportunity to save big and score a great deal on high-quality pre-owned items. 
   
   
   
 .productbox  
-   h3 New Products
+   h3.text-center Top Deals
    product-card(v-for="product in products"  :product="product")
  
 
@@ -53,25 +53,54 @@ Navbarbuyer
 
 </template>
 
-<style>
+<style scoped>
 h1 {
-  font-weight: bold;
 }
-.hero {
-  color: white;
+.heroImage {
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   align-items: center;
+  width: 100%;
 }
+h1 {
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  top: 150px;
+  left: 70px;
+  font-size: 2rem;
+}
+h4 {
+  position: absolute;
+  top: 200px;
+  left: 70px;
+  font-size: 1rem;
+}
+p {
+  position: absolute;
+  top: 220px;
+  left: 70px;
+  font-size: 1rem;
+}
+
 .box {
-  background-color: #008ecc;
+  position: relative;
+  background-color: #7ce2f0;
   width: 100%;
   height: 400px;
-  place-items: centre;
-
-  margin-bottom: 40px;
-  padding: 7% 7% 7%;
+  box-sizing: border-box;
+  margin-bottom: 0px;
+  margin-top: 30px;
+  padding: 3% 3% 3%;
 }
 .productbox {
-  margin: 1% 5% 1% 5%;
+  margin: 0% 0% 1% 0%;
+  background-color: #ffff;
+  padding: 1% 3% 3% 3%;
+  align-items: center;
+}
+.hero {
+  color: #202249;
 }
 </style>
