@@ -14,10 +14,7 @@ export default {
 HomeNavbarbuyer
 .box.container-fluid
   .row
-    .col-sm-9.col-md-7.col-lg-12.mx-auto
-    
-      img.img-fluid.svg(src='@/assets/images/specialOffers.svg')
-      .col-sm-9.col-md-7.col-lg-12.mx-auto.justify-content-start
+    .col-sm-9.col-md-7.col-lg-12.mx-auto.justify-content-start
         h1 Super Amazing Offers
         p  Don't miss out on the opportunity to save big on high-quality pre-owned items. 
       button.btn.btn-primary.btnclass.ml-auto( type="button") Shop Now
@@ -66,9 +63,9 @@ p {
 .btnborder {
 }
 
-.svg {
+/* .svg {
   position: absolute;
   left: 160px;
   top: 220px;
-}
+} */
 </style>
