@@ -33,7 +33,7 @@ Navbarbuyer
 .box.container-fluid
  .row
     .col-sm-9.col-md-7.col-lg-12.mx-auto
-      img.img-fluid.heroImage(src='@/assets/images/LandingPage2.png')
+      img.img-fluid.heroImage(src='@/assets/LandingPage2.png')
       div.grid-container.items
         h1.hero.text-start.text-break Shop smart, not expensive! 
         h4.hero.text-start.text-break Get Amazing Deals on High-Quality pre-owned items.
