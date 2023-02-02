@@ -32,8 +32,18 @@ export default {
 Navbarbuyer
 h3 My Cart
 CartCard(v-for="product in cart.items"  :product="product")
-
-
+div.d-flex.justify-content-between(v-if="cart?.items?.length")
+  div  
+    a.btn.btn-warning(href='#') Continue Shopping
+  div
+    | Total 
+    strong {{cart.items.length}}
+  div
+    a.btn.btn-success(href='#') Checkout 
+div(v-else)
+ div 
+  p.text-center Cart is empty
+ 
 </template>
 
 <style scoped>
